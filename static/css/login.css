@@ -1,0 +1,99 @@
+/* ===== GLOBAL ===== */
+body {
+    margin: 0;
+    height: 100vh;
+    font-family: 'Poppins', Arial, sans-serif;
+    background: linear-gradient(to right, #f5f7fa, #c3cfe2);
+}
+
+/* ===== TOP TITLE ===== */
+.title-box {
+    background: #1e3a8a;
+    color: white;
+    text-align: center;
+    font-size: 32px;
+    font-weight: 600;
+    padding: 20px 0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* ===== MAIN LAYOUT ===== */
+.page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 80px;
+    height: calc(100vh - 80px);
+}
+
+/* ===== LOGIN BOX (SLIGHTLY BIGGER) ===== */
+.login-box {
+    background: white;
+    padding: 45px 50px;
+    border-radius: 14px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.login-box h2 {
+    color: #1e3a8a;
+    margin-bottom: 25px;
+    font-size: 24px;
+}
+
+/* ===== INPUTS ===== */
+.login-box input {
+    display: block;
+    width: 260px;
+    padding: 11px;
+    margin: 12px auto;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+.login-box input:focus {
+    outline: none;
+    border-color: #2563eb;
+}
+
+/* ===== ROLE OPTIONS ===== */
+.role {
+    display: block;
+    margin: 12px 0;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+/* ===== BUTTON ===== */
+button {
+    margin-top: 18px;
+    padding: 10px 30px;
+    border: none;
+    background: #2563eb;
+    color: white;
+    font-size: 15px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1e40af;
+}
+
+/* ===== IMAGE BOX (UNCHANGED SIZE) ===== */
+.image-box {
+    width: 320px;
+    height: 320px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-box img {
+    width: 260px;
+    display: none;
+}

@@ -1,0 +1,138 @@
+/* ===== GLOBAL ===== */
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    background: #f5f7fa;
+    margin: 0;
+    padding: 20px;
+}
+
+/* ===== HEADINGS ===== */
+h1, h2 {
+    color: #1e3a8a;
+    margin-bottom: 15px;
+}
+
+/* ===== LAYOUT ===== */
+.container {
+    max-width: 1000px;
+    margin: auto;
+}
+
+/* ===== CARD STYLE ===== */
+.card {
+    background: white;
+    padding: 20px;
+    margin-bottom: 25px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* ===== INPUTS & TEXTAREA ===== */
+input,
+textarea {
+    width: 260px;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-family: 'Poppins', Arial, sans-serif;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    border-color: #2563eb;
+}
+
+textarea {
+    resize: none;
+}
+
+/* ===== BUTTONS ===== */
+button {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+button:hover {
+    background: #1e40af;
+}
+
+/* ===== TABLE STYLING ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th {
+    background: #2563eb;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+
+tr:hover {
+    background: #f0f4ff;
+}
+
+/* ===== STUDENT ROW (ADMIN) ===== */
+.student-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+}
+
+/* ===== PRESENT / ABSENT BUTTONS ===== */
+.present-btn {
+    background: #22c55e;
+}
+
+.present-btn:hover {
+    background: #16a34a;
+}
+
+.absent-btn {
+    background: #ef4444;
+}
+
+.absent-btn:hover {
+    background: #dc2626;
+}
+
+/* ===== LINKS ===== */
+a {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* ===== CENTER ALIGN ===== */
+.center {
+    text-align: center;
+}
+
+.report-link {
+    font-size: 16px;
+}
