@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+
+    <!-- Poppins Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Admin CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Admin Dashboard</h1>
+
+    <!-- ADD STUDENT CARD -->
+    <div class="card">
+        <h2>Add Student</h2>
+
+        <form method="post" action="/add_student">
+            <input type="text" name="name" placeholder="Student Name" required>
+            <input type="text" name="roll" placeholder="Roll Number" required>
+            <button type="submit">Add Student</button>
+        </form>
+    </div>
+
+    <!-- MARK ATTENDANCE CARD -->
+    <div class="card">
+        <h2>Mark Attendance</h2>
+
+        {% for s in students %}
+        <div class="student-row">
+            <span><b>{{ s.name }}</b> ({{ s.roll }})</span>
+
+            <div class="actions">
+                <form method="post" action="/mark_attendance">
+                    <input type="hidden" name="roll" value="{{ s.roll }}">
+                    <input type="hidden" name="status" value="Present">
+                    <button type="submit" class="present-btn">Present</button>
+                </form>
+
+                <form method="post" action="/mark_attendance">
+                    <input type="hidden" name="roll" value="{{ s.roll }}">
+                    <input type="hidden" name="status" value="Absent">
+                    <button type="submit" class="absent-btn">Absent</button>
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- REPORT LINK -->
+    <div class="card center">
+        <a href="/attendance_report" class="report-link">View Attendance Report</a>
+    </div>
+
+</div>
+
+</body>
+</html>

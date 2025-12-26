@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Attendance Report</title>
+
+    <!-- Poppins Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Admin CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Attendance Report</h1>
+
+    <div class="card">
+
+        <table>
+            <tr>
+                <th>Roll Number</th>
+                <th>Status</th>
+                <th>Date</th>
+                <th>Reason</th>
+                <th>Action</th>
+            </tr>
+
+            {% for a in attendance %}
+            <tr>
+                <td>{{ a.roll }}</td>
+
+                {% if a.status == "Present" %}
+                    <td style="color: green; font-weight: 600;">Present</td>
+                {% else %}
+                    <td style="color: red; font-weight: 600;">Absent</td>
+                {% endif %}
+
+                <td>{{ a.date }}</td>
+                <td>{{ a.reason if a.reason else "-" }}</td>
+
+                <td>
+                    <form method="post" action="/edit_attendance">
+                        <input type="hidden" name="id" value="{{ a.id }}">
+                        <input type="hidden" name="current_status" value="{{ a.status }}">
+                        <button type="submit">Toggle</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+
+    </div>
+
+</div>
+
+</body>
+</html>

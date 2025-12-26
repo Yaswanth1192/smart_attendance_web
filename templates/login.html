@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Smart Attendance Login</title>
+
+    <!-- Poppins Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+</head>
+<body>
+
+<!-- TOP HEADING BOX -->
+<div class="title-box">
+    Smart Attendance System
+</div>
+
+<div class="page">
+
+    <!-- LOGIN AREA -->
+    <div class="login-box">
+        <h2>Login</h2>
+
+        <form action="/login" method="post">
+
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
+
+            <label class="role"
+                   onmouseenter="showAdmin()">
+                <input type="radio" name="role" value="admin" required>
+                Admin
+            </label>
+
+            <label class="role"
+                   onmouseenter="showStudent()">
+                <input type="radio" name="role" value="student">
+                Student
+            </label>
+
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <!-- IMAGE AREA (UNCHANGED SIZE) -->
+    <div class="image-box">
+        <img id="teacherImg" src="{{ url_for('static', filename='teacher.png') }}">
+        <img id="studentImg" src="{{ url_for('static', filename='student.png') }}">
+    </div>
+
+</div>
+
+<script>
+function showAdmin() {
+    document.getElementById("teacherImg").style.display = "block";
+    document.getElementById("studentImg").style.display = "none";
+}
+
+function showStudent() {
+    document.getElementById("studentImg").style.display = "block";
+    document.getElementById("teacherImg").style.display = "none";
+}
+</script>
+
+</body>
+</html>

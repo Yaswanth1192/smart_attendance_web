@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Dashboard</title>
+
+    <!-- Poppins Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Reuse Admin CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Student Dashboard</h1>
+
+    <!-- VIEW ATTENDANCE CARD -->
+    <div class="card">
+        <h2>View My Attendance</h2>
+
+        <form method="post" action="/student_report">
+            <input type="text" name="roll" placeholder="Enter Roll Number" required>
+            <button type="submit">View Attendance</button>
+        </form>
+    </div>
+
+    <!-- SUBMIT ABSENCE REASON CARD -->
+    <div class="card">
+        <h2>Submit Absence Reason</h2>
+
+        <form method="post" action="/submit_reason">
+            <input type="text" name="roll" placeholder="Roll Number" required>
+            <input type="date" name="date" required>
+            <textarea name="reason" placeholder="Enter reason for absence" rows="4" required></textarea>
+            <button type="submit">Submit Reason</button>
+        </form>
+    </div>
+
+</div>
+
+</body>
+</html>

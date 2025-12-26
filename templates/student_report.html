@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Attendance Report</title>
+
+    <!-- Poppins Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Reuse Admin CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<div class="container">
+
+    <h1 style="text-align:center;">My Attendance Report</h1>
+
+    <!-- SUMMARY CARD -->
+    <div class="card">
+        <p><b>Roll Number:</b> {{ roll }}</p>
+        <p><b>Total Classes:</b> {{ total }}</p>
+        <p><b>Present:</b> {{ present }}</p>
+        <p><b>Absent:</b> {{ absent }}</p>
+        <p><b>Attendance %:</b> {{ percentage }}%</p>
+
+        <hr>
+
+        <p><b>Allowed Absences:</b> {{ allowed_absent }}</p>
+        <p><b>Remaining Leaves:</b> {{ remaining_leaves }}</p>
+
+        <p><b>Status:</b>
+            {% if status == "SAFE" %}
+                <span style="color:green; font-weight:600;">🟢 SAFE</span>
+            {% elif status == "WARNING" %}
+                <span style="color:orange; font-weight:600;">🟡 WARNING</span>
+            {% else %}
+                <span style="color:red; font-weight:600;">🔴 AT RISK</span>
+            {% endif %}
+        </p>
+    </div>
+
+    <!-- CHART CARD -->
+    <div class="card" style="text-align:center;">
+        <h2>Attendance Graph</h2>
+
+        <div style="width:200px; margin:auto;">
+            <canvas id="attendanceChart"></canvas>
+        </div>
+    </div>
+
+    <!-- TABLE CARD -->
+    <div class="card">
+        <h2>Attendance Details</h2>
+
+        <table>
+            <tr>
+                <th>Status</th>
+                <th>Date</th>
+                <th>Reason</th>
+            </tr>
+
+            {% for a in records %}
+            <tr>
+                <td>{{ a.status }}</td>
+                <td>{{ a.date }}</td>
+                <td>
+                    {% if a.status == 'Absent' %}
+                        {{ a.reason if a.reason else '-' }}
+                    {% else %}
+                        -
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <div class="card center">
+        <a href="/student" class="report-link">Back to Student Dashboard</a>
+    </div>
+
+</div>
+
+<!-- CHART SCRIPT -->
+<script>
+const ctx = document.getElementById('attendanceChart');
+
+new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: ['Present', 'Absent'],
+        datasets: [{
+            data: [{{ present }}, {{ absent }}],
+            backgroundColor: [
+                "#22c55e", // Present - Green
+                "#ef4444"  // Absent - Red
+            ]
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: true
+    }
+});
+</script>
+
+</body>
+</html>
