@@ -53,6 +53,7 @@ smart_attendence_web/
 ├── README.md
 ├── .gitignore
 └── LICENSE
+
 ```
 
 ---
